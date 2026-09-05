@@ -1,0 +1,12 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "other-styles-douyin-live-notify-scheduler",
+  "main": "src/index.js",
+  "compatibility_date": "2026-09-05",
+  "triggers": {
+    "crons": ["*/10 * * * *"]
+  },
+  "observability": {
+    "enabled": true
+  }
+}
