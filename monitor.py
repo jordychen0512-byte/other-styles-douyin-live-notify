@@ -16,7 +16,10 @@ STREAMERS = {
         "name": "無名高手｜埋",
         "url": "https://live.douyin.com/265553120212",
     },
-    # 第三位直播主之後可在這裡加入。
+    "chongjiu": {
+        "name": "沖就",
+        "url": "https://live.douyin.com/713474936121",
+    },
 }
 
 STATE_FILE = Path("state.json")

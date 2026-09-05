@@ -6,7 +6,7 @@
 
 - 95高手｜抖音一岚：https://v.douyin.com/a8aESt_i6HE/
 - 無名高手｜埋：https://live.douyin.com/265553120212
-- 第三位直播主：稍後加入
+- 沖就：https://live.douyin.com/713474936121
 
 ## 運作方式
 
@@ -31,6 +31,6 @@ npx wrangler deploy
 
 Cron 設定在 `scheduler/wrangler.jsonc`，目前為每 10 分鐘執行一次。
 
-## 新增第三位直播主
+## 新增直播主
 
 在 `monitor.py` 的 `STREAMERS` 加入一筆資料，並在 `state.json` 加入相同 key、值設為 `false`。
