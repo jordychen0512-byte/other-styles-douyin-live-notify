@@ -1,5 +1,5 @@
 {
-  "yilan": true,
-  "mai": false,
-  "chongjiu": false
+  "yilan": false,
+  "mai": true,
+  "chongjiu": true
 }
