@@ -10,7 +10,7 @@ from streamget import DouyinLiveStream
 STREAMERS = {
     "yilan": {
         "name": "95高手｜抖音一岚",
-        "url": "https://v.douyin.com/a8aESt_i6HE/",
+        "url": "https://live.douyin.com/759430282516",
     },
     "mai": {
         "name": "無名高手｜埋",
