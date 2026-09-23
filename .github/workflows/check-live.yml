@@ -3,7 +3,7 @@ name: Check Other Styles Douyin Live
 on:
   workflow_dispatch:
   schedule:
-    - cron: "*/10 * * * *"
+    - cron: "*/5 * * * *"
 
 concurrency:
   group: other-styles-douyin-live-check
