@@ -20,6 +20,10 @@ STREAMERS = {
         "name": "沖就",
         "url": "https://live.douyin.com/713474936121",
     },
+    "jiuzui": {
+        "name": "久醉",
+        "url": "https://live.douyin.com/691375403412",
+    },
 }
 
 STATE_FILE = Path("state.json")
