@@ -9,6 +9,7 @@
 | yilan | 95高手｜抖音一岚 | https://live.douyin.com/759430282516 |
 | mai | 無名高手｜埋 | https://live.douyin.com/265553120212 |
 | chongjiu | 沖就 | https://live.douyin.com/713474936121 |
+| jiuzui | 久醉 | https://live.douyin.com/691375403412 |
 
 名單定義於 `monitor.py` 的 `STREAMERS`。
 
