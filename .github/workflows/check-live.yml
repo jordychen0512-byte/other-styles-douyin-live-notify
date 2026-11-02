@@ -27,6 +27,14 @@ jobs:
           ref: ${{ github.ref_name }}
           fetch-depth: 0
 
+      # Reuse the runner tool cache instead of downloading via streamget install-node.
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: "22"
+          check-latest: false
+          package-manager-cache: false
+
       - name: Setup Python
         uses: actions/setup-python@v7
         with:
@@ -35,25 +43,20 @@ jobs:
 
       - name: Install dependencies
         timeout-minutes: 2
-        run: |
-          python -m pip install --retries 5 --timeout 20 --requirement requirements.txt
+        run: python -m pip install --retries 5 --timeout 20 --requirement requirements.txt
 
-      - name: Install Node.js with retries
+      - name: Verify Node.js runtime
         shell: python
         run: |
           import subprocess
-          import time
+          import execjs
+          from streamget.scripts.node_setup import check_nodejs_installed
 
-          for attempt in range(1, 4):
-              print(f"Installing Node.js (attempt {attempt}/3)", flush=True)
-              try:
-                  subprocess.run(["streamget", "install-node"], check=True, timeout=45)
-                  break
-              except (subprocess.CalledProcessError, subprocess.TimeoutExpired) as error:
-                  if attempt == 3:
-                      raise SystemExit("Node.js installation failed after 3 attempts.") from error
-                  print(f"::warning::Node.js installation failed: {error}. Retrying...", flush=True)
-                  time.sleep(5 * attempt)
+          subprocess.run(["node", "--version"], check=True, timeout=10)
+          assert check_nodejs_installed(), "streamget cannot find Node.js on PATH"
+          runtime = execjs.get("Node")
+          assert runtime.eval("1 + 1") == 2, "Node.js JavaScript execution failed"
+          print("streamget and Python JavaScript runtime can use Node.js.")
 
       - name: Check Douyin live status
         run: python monitor.py
