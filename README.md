@@ -40,7 +40,7 @@ GitHub Actions 的 `.github/workflows/check-live.yml` 設有 `*/5 * * * *` 排�
 
 程式庫另附獨立 Worker `other-styles-douyin-live-notify-scheduler`，Cron 同樣為每 5 分鐘，觸發本 repo `main` 分支。若 Cloudflare 與 GitHub 排程皆啟用，可能產生額外檢查。
 
-Workflow 使用 Python 3.12，工作上限為 6 分鐘。套件安裝步驟上限 2 分鐘；`streamget install-node` 最多嘗試 3 次，每次限時 45 秒，重試前分別等待 5、10 秒。同一 concurrency group 不取消正在執行的工作。
+Workflow 使用 Python 3.12 與 `actions/setup-node@v7` 提供的 Node.js 22。Node.js 優先取用 runner tool cache（`check-latest: false`），不再每輪執行 `streamget install-node` 下載；快取沒有相符版本時才由官方 action 取得。Python 套件安裝限時 2 分鐘，pip 設定 5 次連線重試及 20 秒 timeout；安裝後驗證 `streamget` 能找到 Node.js，並透過 Python 執行 JavaScript。工作上限為 6 分鐘，同一 concurrency group 不取消正在執行的工作。
 
 ## 必要 Secrets
 
