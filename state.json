@@ -1,6 +1,6 @@
 {
-  "yilan": true,
+  "yilan": false,
   "mai": true,
-  "chongjiu": false,
+  "chongjiu": true,
   "jiuzui": false
 }
